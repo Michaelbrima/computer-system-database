@@ -80,7 +80,32 @@
     <?php
     //connect to database
     $connect=mysqli_connect("localhost", "sqluser", "password", "web_app");
-    
+
+	"env": {
+	POSTGRES_URL="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+	POSTGRES_PRISMA_URL="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+	POSTGRES_URL_NO_SSL="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech:5432/verceldb"
+	POSTGRES_URL_NON_POOLING="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+	POSTGRES_USER="default"
+	POSTGRES_HOST="ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech"
+	POSTGRES_PASSWORD="0uJMnZXhy9ws"
+	POSTGRES_DATABASE="verceldb"
+		
+	}
+		
+	$url = $_ENV['POSTGRES_USER'];
+	$purl = $_ENV['POSTGRES_PRISMA_URL'];
+	$nossl = $_ENV['POSTGRES_URL_NO_SSL'];
+	$nonpooling = $_ENV['POSTGRES_URL_NON_POOLING'];
+	$user = $_ENV['POSTGRES_USER'];
+	$host = $_ENV['POSTGRES_HOST'];
+	$password = $_ENV['POSTGRES_PASSWORD'];
+	$db = $_ENV['POSTGRES_DATABASE'];
+
+	$connection_string = "url=" . $url . "prismaurl=" . $purl . "nonpooling=" . $nonpooling . "user=" . $user . "host=" . $host . " password=" . $password . " dbname=" . $db . "' sslmode=require";
+
+	$dbconn = pg_connect($connection_string);
+
     //check connection
     //if(!$connect){
     //    echo 'Connection error:' . mysqli_connect_error();
