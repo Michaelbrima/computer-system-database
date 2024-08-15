@@ -5,9 +5,13 @@
     </head>
 
 <body>
-    <h1> Computer System Database </h1>
-<p> (Browse for your ideal computer system through multiple attributes)</p> 
+    <h1 align="center"> Computer System Database </h1>
+<p align="center"> <b> Browse for your ideal computer system by filtering through multiple attributes.</b></p> 
+
+<p align="center"> (Please click on one of the filter buttons below to begin using the database.) </p>
+
 <br>
+	  
 	  <table border=\"5\" cellpadding=\"5\" cellspacing=\"0\" style=\"border-  collapse: collapse\" bordercolor=\"#808080\" width=\"100&#37;\"    id=\"AutoNumber2\" >
    <tr>
    <td width=100>ID:</td> 
@@ -17,7 +21,7 @@
   ?>' 
   method='post' name='form_filter' >
   <select name="value">
-  <option value="">Select by Brand</option>
+  <option value=null>Select by Brand</option>
   <option value="Nintendo">Nintendo</option>
   <option value="Sony">Sony</option>
   <option value="Valve">Valve</option>
@@ -43,7 +47,7 @@
   ?>' 
   method='post' name='form_filter' >
   <select name="value">
-  <option value="">Select by Purpose</option>
+  <option value=null>Select by Purpose</option>
   <option value="office">Office</option>
   <option value="gaming">Gaming</option>
   </select>
@@ -58,7 +62,7 @@
   ?>' 
   method='post' name='form_filter' >
   <select name="value">
-  <option value="">Select by Device Type</option>
+  <option value=null>Select by Device Type</option>
   <option value="desktoppc">Desktop PC</option>
   <option value="handheld">Handheld</option>
   
@@ -75,37 +79,12 @@
   <td width=100>Storage</td>
   <td width=100>Price</td>
   <td width=100>Product Link</td>
-  </tr>";
+  </tr>
 
     <?php
     //connect to database
     $connect=mysqli_connect("localhost", "sqluser", "password", "web_app");
-
-	"env": {
-	POSTGRES_URL="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
-	POSTGRES_PRISMA_URL="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
-	POSTGRES_URL_NO_SSL="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech:5432/verceldb"
-	POSTGRES_URL_NON_POOLING="postgres://default:0uJMnZXhy9ws@ep-delicate-sunset-a4tz9uxq.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
-	POSTGRES_USER="default"
-	POSTGRES_HOST="ep-delicate-sunset-a4tz9uxq-pooler.us-east-1.aws.neon.tech"
-	POSTGRES_PASSWORD="0uJMnZXhy9ws"
-	POSTGRES_DATABASE="verceldb"
-		
-	}
-		
-	$url = $_ENV['POSTGRES_USER'];
-	$purl = $_ENV['POSTGRES_PRISMA_URL'];
-	$nossl = $_ENV['POSTGRES_URL_NO_SSL'];
-	$nonpooling = $_ENV['POSTGRES_URL_NON_POOLING'];
-	$user = $_ENV['POSTGRES_USER'];
-	$host = $_ENV['POSTGRES_HOST'];
-	$password = $_ENV['POSTGRES_PASSWORD'];
-	$db = $_ENV['POSTGRES_DATABASE'];
-
-	$connection_string = "url=" . $url . "prismaurl=" . $purl . "nonpooling=" . $nonpooling . "user=" . $user . "host=" . $host . " password=" . $password . " dbname=" . $db . "' sslmode=require";
-
-	$dbconn = pg_connect($connection_string);
-
+    
     //check connection
     //if(!$connect){
     //    echo 'Connection error:' . mysqli_connect_error();
@@ -114,15 +93,17 @@
  //   if(!$connect){
  //       echo "Connection successful!";
  //   }
+ 
+	if (isset($_POST['value'])) {
 	
     //creating a query	
 	if($_POST['value'] == 'Nintendo') { 
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Nintendo'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -143,9 +124,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Sony'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -166,9 +147,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Valve'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -189,9 +170,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Asus'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -212,9 +193,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Corsair'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -235,9 +216,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'HP'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -258,9 +239,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Acer'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -281,9 +262,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Alienware'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -304,9 +285,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Maingear'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -327,9 +308,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Apple'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -350,9 +331,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE brand = 'Dell'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -373,9 +354,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE purpose = 'Gaming'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -396,9 +377,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE purpose = 'Office'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -419,9 +400,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE device_type = 'Desktop PC'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -442,9 +423,9 @@ print "</tr>";
     // query to get all Nintendo records 
     $query = "SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers WHERE device_type = 'Handheld'"; 
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -463,9 +444,9 @@ print "<td>" . $row['product_link'] . "</td>";
 print "</tr>"; 
 	} } else{
 	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
-	$result = mysqli_query($dbconn, $query);
+	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 		//$record = mysqli_fetch_assoc($result)
@@ -488,7 +469,8 @@ print "<td>" . $row['storage'] . "</td>";
 print "<td>" . $row['price'] . "</td>";
 print "<td>" . $row['product_link'] . "</td>"; 
 print "</tr>"; 
-    }
+		}
+	}
 }
 //$sql = "SELECT id, brand FROM computers"; 
 //$newResult = mysqli_query($connect, $sql); 
@@ -503,7 +485,8 @@ print "</tr>";
 	
     ?>
 	
-	print "</table>"; 
+	
+	</table> 
 </body>
 
 </html>
