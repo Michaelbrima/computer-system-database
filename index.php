@@ -5,9 +5,13 @@
     </head>
 
 <body>
-    <h1> Computer System Database </h1>
-<p> (Browse for your ideal computer system through multiple attributes)</p> 
+    <h1 align="center"> Computer System Database </h1>
+<p align="center"> <b> Browse for your ideal computer system by filtering through multiple attributes.</b></p> 
+
+<p align="center"> (Please click on one of the filter buttons below to begin using the database.) </p>
+
 <br>
+	  
 	  <table border=\"5\" cellpadding=\"5\" cellspacing=\"0\" style=\"border-  collapse: collapse\" bordercolor=\"#808080\" width=\"100&#37;\"    id=\"AutoNumber2\" >
    <tr>
    <td width=100>ID:</td> 
@@ -17,7 +21,7 @@
   ?>' 
   method='post' name='form_filter' >
   <select name="value">
-  <option value="">Select by Brand</option>
+  <option value=null>Select by Brand</option>
   <option value="Nintendo">Nintendo</option>
   <option value="Sony">Sony</option>
   <option value="Valve">Valve</option>
@@ -43,7 +47,7 @@
   ?>' 
   method='post' name='form_filter' >
   <select name="value">
-  <option value="">Select by Purpose</option>
+  <option value=null>Select by Purpose</option>
   <option value="office">Office</option>
   <option value="gaming">Gaming</option>
   </select>
@@ -58,7 +62,7 @@
   ?>' 
   method='post' name='form_filter' >
   <select name="value">
-  <option value="">Select by Device Type</option>
+  <option value=null>Select by Device Type</option>
   <option value="desktoppc">Desktop PC</option>
   <option value="handheld">Handheld</option>
   
@@ -75,7 +79,7 @@
   <td width=100>Storage</td>
   <td width=100>Price</td>
   <td width=100>Product Link</td>
-  </tr>";
+  </tr>
 
     <?php
     //connect to database
@@ -89,6 +93,8 @@
  //   if(!$connect){
  //       echo "Connection successful!";
  //   }
+ 
+	if (isset($_POST['value'])) {
 	
     //creating a query	
 	if($_POST['value'] == 'Nintendo') { 
@@ -97,7 +103,7 @@
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -120,7 +126,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -143,7 +149,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -166,7 +172,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -189,7 +195,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -212,7 +218,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -235,7 +241,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -258,7 +264,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -281,7 +287,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -304,7 +310,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -327,7 +333,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -350,7 +356,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -373,7 +379,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -396,7 +402,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -419,7 +425,7 @@ print "</tr>";
 //	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 
@@ -440,7 +446,7 @@ print "</tr>";
 	$query = 'SELECT id,device,brand,purpose,device_type, cpu, gpu, memory, storage, price, product_link FROM computers ORDER BY brand';
 	$result = mysqli_query($connect, $query);
 
-    echo mysqli_num_rows( $result );
+    //echo mysqli_num_rows( $result );
 
     while( $row = mysqli_fetch_array($result)){
 		//$record = mysqli_fetch_assoc($result)
@@ -463,7 +469,8 @@ print "<td>" . $row['storage'] . "</td>";
 print "<td>" . $row['price'] . "</td>";
 print "<td>" . $row['product_link'] . "</td>"; 
 print "</tr>"; 
-    }
+		}
+	}
 }
 //$sql = "SELECT id, brand FROM computers"; 
 //$newResult = mysqli_query($connect, $sql); 
@@ -478,7 +485,8 @@ print "</tr>";
 	
     ?>
 	
-	print "</table>"; 
+	
+	</table> 
 </body>
 
 </html>
