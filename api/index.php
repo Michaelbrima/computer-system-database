@@ -83,8 +83,9 @@
 
     <?php
     //connect to database
-    $connect=mysqli_connect("localhost", "sqluser", "password", "web_app");
-    
+    //$connect=mysqli_connect("localhost", "sqluser", "password", "web_app");
+    $connect=mysqli_connect("sql5.freesqldatabase.com", "sql5727000", "JwNK88RJEq", "sql5727000");
+
     //check connection
     //if(!$connect){
     //    echo 'Connection error:' . mysqli_connect_error();
