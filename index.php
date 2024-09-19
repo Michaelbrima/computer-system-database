@@ -5,7 +5,7 @@
     </head>
 
 <body>
-    <h1 align="center"> Computer System Database 2</h1>
+    <h1 align="center"> Computer System Database</h1>
 <p align="center"> <b> Browse for your ideal computer system by filtering through multiple attributes.</b></p> 
 
 <p align="center"> (Please click on one of the filter buttons below to begin using the database.) </p>
